@@ -50,5 +50,15 @@ function wagesEarnedOnDate(employeeRecord, date) {
   return wage;
 }
 
+function allWagesFor(employeeRecord) {
+    let soughtDates = employeeRecord.timeInEvents.map(event => event.date);
+
+    let dayWages = soughtDates.map(date => wagesEarnedOnDate(employeeRecord, date));
+
+    let grandTotal = dayWages.reduce(function(acc, cv) {return acc+cv}, 0);
+
+    return grandTotal;
+
+}
 
 
