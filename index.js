@@ -51,14 +51,22 @@ function wagesEarnedOnDate(employeeRecord, date) {
 }
 
 function allWagesFor(employeeRecord) {
-    let soughtDates = employeeRecord.timeInEvents.map(event => event.date);
-
-    let dayWages = soughtDates.map(date => wagesEarnedOnDate(employeeRecord, date));
-
-    let grandTotal = dayWages.reduce(function(acc, cv) {return acc+cv}, 0);
-
-    return grandTotal;
-
+    let totalWages = employeeRecord.timeInEvents.reduce(function (total, currentValue) {
+        let wages = wagesEarnedOnDate(employeeRecord, currentValue.date) + total
+        return wages;
+    }, 0)
+    return totalWages;
 }
 
+function findEmployeeByFirstName(srcArray, firstName) {
+    return srcArray.find(e => e.firstName === firstName);
+}
+
+function calculatePayroll(employeeRecords) {
+    let totalWages = employeeRecords.reduce(function (total, currentValue) {
+        let newTotal = allWagesFor(currentValue) + total
+        return newTotal;
+    }, 0)
+    return totalWages;
+} 
 
