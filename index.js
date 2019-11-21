@@ -26,3 +26,12 @@ function createTimeInEvent(employeeRecord, dateStamp) {
   return employeeRecord
 }
 
+function createTimeOutEvent(employeeRecord, dateStamp) {
+  let timeOutObj = {
+    type: "TimeOut",
+    hour: parseInt(dateStamp.slice(11, 16),10),
+    date:dateStamp.slice(0,10)
+  }
+  employeeRecord.timeOutEvents.push(timeOutObj);
+  return employeeRecord
+}
