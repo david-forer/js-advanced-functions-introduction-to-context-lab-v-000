@@ -18,10 +18,11 @@ function createEmployeeRecords(employeesArray) {
 
 function createTimeInEvent(employeeRecord, dateStamp) {
   let timeInObj = {
-    type: "Timein",
+    type: "TimeIn",
     hour: parseInt(dateStamp.slice(11, 16),10),
     date:dateStamp.slice(0,10)
   }
   employeeRecord.timeInEvents.push(timeInObj);
   return employeeRecord
 }
+
