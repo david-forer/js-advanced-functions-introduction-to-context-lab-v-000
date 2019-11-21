@@ -21,9 +21,9 @@ function createTimeInEvent(employeeRecord, dateStamp) {
     type: "TimeIn",
     hour: parseInt(dateStamp.slice(11, 16),10),
     date:dateStamp.slice(0,10)
-  }
+  };
   employeeRecord.timeInEvents.push(timeInObj);
-  return employeeRecord
+  return employeeRecord;
 }
 
 function createTimeOutEvent(employeeRecord, dateStamp) {
@@ -31,7 +31,19 @@ function createTimeOutEvent(employeeRecord, dateStamp) {
     type: "TimeOut",
     hour: parseInt(dateStamp.slice(11, 16),10),
     date:dateStamp.slice(0,10)
-  }
+  };
   employeeRecord.timeOutEvents.push(timeOutObj);
-  return employeeRecord
+  return employeeRecord;
 }
+
+function hoursWorkedOnDate(employeeRecord, date) {
+  let timeIn = employeeRecord.timeInEvents.find(e => e.date === date);
+  let timeOut = employeerecord.timeOutEvents.find(e => e.date === date);
+  let hoursWorked = (timeOut.hour - timeIn.hour)/100;
+  
+  return hoursWorked;
+}
+
+
+
+
